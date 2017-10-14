@@ -11,9 +11,9 @@ namespace Bitusion.Apm.Benchmarks.Time
         [Benchmark(Baseline = true, Description = "Plain DateTime.UtcNow")]
         public DateTime GetDateTimeUtcNow()
         {
-            DateTime t = DateTime.Now;
+            var t = DateTime.Now;
 
-            Parallel.For(1, 1000, (i) => t = DateTime.UtcNow);
+            Parallel.For(1, 1000, i => t = DateTime.UtcNow);
 
             return t;
         }
@@ -21,9 +21,9 @@ namespace Bitusion.Apm.Benchmarks.Time
         [Benchmark(Description = "Get DateTime")]
         public DateTime GetDateTime()
         {
-            DateTime t = DateTime.Now;
+            var t = DateTime.Now;
 
-            Parallel.For(1, 1000, (i) => t = UniqueUtcTimestamp.GetDateTime());
+            Parallel.For(1, 1000, i => t = UniqueUtcTimestamp.GetDateTime());
 
             return t;
         }
@@ -31,9 +31,9 @@ namespace Bitusion.Apm.Benchmarks.Time
         [Benchmark(Description = "Get DateTimeOffset")]
         public DateTimeOffset GetDateTimeOffset()
         {
-            DateTimeOffset t = DateTimeOffset.Now;
+            var t = DateTimeOffset.Now;
 
-            Parallel.For(1, 1000, (i) => t = UniqueUtcTimestamp.GetDateTimeOffset());
+            Parallel.For(1, 1000, i => t = UniqueUtcTimestamp.GetDateTimeOffset());
 
             return t;
         }
@@ -41,8 +41,8 @@ namespace Bitusion.Apm.Benchmarks.Time
         [Benchmark(Description = "Get UnixTime with nanoseconds")]
         public long GetUnixTimeWithNanoseconds()
         {
-            long t = 0L;
-            Parallel.For(1, 1000, (i) => t = UniqueUtcTimestamp.GetUnixTimeWithNanoseconds());
+            var t = 0L;
+            Parallel.For(1, 1000, i => t = UniqueUtcTimestamp.GetUnixTimeWithNanoseconds());
             return t;
         }
     }
