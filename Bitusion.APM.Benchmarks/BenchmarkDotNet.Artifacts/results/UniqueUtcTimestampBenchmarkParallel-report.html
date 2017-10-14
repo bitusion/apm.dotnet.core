@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>UniqueUtcTimestampBenchmarkParallel</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.10.9, OS=Windows 10 Redstone 2 (10.0.15063)
+Processor=Intel Core i7-4700MQ CPU 2.40GHz (Haswell), ProcessorCount=8
+Frequency=2338348 Hz, Resolution=427.6523 ns, Timer=TSC
+.NET Core SDK=2.0.2
+  [Host]     : .NET Core 2.0.0 (Framework 4.6.00001.0), 64bit RyuJIT
+  DefaultJob : .NET Core 2.0.0 (Framework 4.6.00001.0), 64bit RyuJIT
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>                   Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Scaled</th><th>ScaledSD</th><th>Gen 0</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>  'Plain DateTime.UtcNow'</td><td>22.94 us</td><td>0.1012 us</td><td>0.0845 us</td><td>1.00</td><td>0.00</td><td>0.9755</td><td>1.8 KB</td>
+</tr><tr><td>           'Get DateTime'</td><td>169.03 us</td><td>1.2750 us</td><td>1.1926 us</td><td>7.37</td><td>0.06</td><td>0.9766</td><td>1.8 KB</td>
+</tr><tr><td>     'Get DateTimeOffset'</td><td>167.86 us</td><td>0.8722 us</td><td>0.7283 us</td><td>7.32</td><td>0.04</td><td>0.9766</td><td>1.81 KB</td>
+</tr><tr><td>'Get UnixTime with nanoseconds'</td><td>170.21 us</td><td>1.3889 us</td><td>1.1598 us</td><td>7.42</td><td>0.06</td><td>0.9440</td><td>1.8 KB</td>
+</tr></tbody></table>
+</body>
+</html>
