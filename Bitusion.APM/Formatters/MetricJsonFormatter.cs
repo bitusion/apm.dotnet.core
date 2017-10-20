@@ -46,7 +46,7 @@ namespace Bitusion.Apm.Formatters
             return builder.ToString();
         }
 
-        private void JoinKeyValue(StringBuilder builder, string key, string value, bool encloseValueInDoubleQuotes = true)
+        private static void JoinKeyValue(StringBuilder builder, string key, string value, bool encloseValueInDoubleQuotes = true)
         {
             EncloseInDoubleQuotes(builder, key);
             builder.Append(':');
@@ -56,7 +56,7 @@ namespace Bitusion.Apm.Formatters
                 builder.Append(value);
         }
 
-        private void EncloseInDoubleQuotes(StringBuilder builder, string value)
+        private static void EncloseInDoubleQuotes(StringBuilder builder, string value)
         {
             builder.Append("\"");
             builder.Append(value);

@@ -29,7 +29,7 @@ namespace Bitusion.Apm.Time
             do
             {
                 original = _lastTimeStamp;
-                long now = DateTime.UtcNow.Ticks;
+                var now = DateTime.UtcNow.Ticks;
                 newValue = Math.Max(now, original + 1);
             }
             while (Interlocked.CompareExchange(ref _lastTimeStamp, newValue, original) != original);

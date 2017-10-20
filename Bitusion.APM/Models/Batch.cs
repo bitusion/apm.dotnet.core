@@ -8,7 +8,7 @@ namespace Bitusion.Apm.Models
         private DateTime _deadline;
         private readonly TimeSpan _nextDeadlineStep;
 
-        public int Count { get { return Items.Count; } }
+        public int Count => Items.Count;
         public List<Metric> Items { get; }
 
         public Batch(int batchSize, TimeSpan nextDeadlineStep)
